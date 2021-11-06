@@ -10,13 +10,26 @@ const express = require('express');
 const { ppid } = require('process');
 const app=express();
 const port =8000;
+const db = require('./config/mongoose');
+const cookieParser = require('cookie-parser');
 // Use express router for different routes and it is exported from its index.js
 
 // require layouts
 
 const expressLayouts = require('express-ejs-layouts');
 
+// To get the request in the correct format Important 
+app.use(express.urlencoded());
+
+// To used cookie parser 
+
+app.use(cookieParser());
+
+
 app.use(express.static('./assets'));
+
+
+
 
 // before using routs i tell to used layouts to render 
 
